@@ -28,12 +28,11 @@ data.ssp2015 = list(
 # B&G model 
 model <- stan_model(file='model/model-12-1.stan')
 
-fit <- sampling(model,data=data.ssp2015,
-								iter = 5500, warmup =500, seed=1234,chains = 3,
-								control = list(adapt_delta = 0.8),
-								init=function(){
-									list(a=0.6,b1=0.1,g1=0.2,c1=5,c2=5,d1=5,d2=5)
-								},thin=2)
+fit <- sampling(model,data=data.ssp2015,iter = 5500, warmup =500, seed=1234,chains = 3,
+		control = list(adapt_delta = 0.8),
+		init=function(){
+		list(a=0.6,b1=0.1,g1=0.2,c1=5,c2=5,d1=5,d2=5)
+				},thin=2)
 
 options(scipen=2,digits=3)
 summary(fit)$summary[1:12,c(1,4,8,9,10)]
@@ -48,9 +47,7 @@ traceplot(fit,c("a","b1","b2","g1","g2","qs","qw","c1","c2","d1","d2"))
 model.logistic <- stan_model(file='model/model-12-2.stan')
 # model a,b,gの事前分布を[0,1]一様分布 c1,d1,c2,d2にいろいろ制限
 fit.logistic <- sampling(model.logistic,data=data.ssp2015,
-												 iter = 5500, warmup =500, seed=1234,chains = 3,
-												 thin=2)
-
+			 iter = 5500, warmup =500, seed=1234,chains = 3, thin=2)
 options(scipen=10,digits=4)
 summary(fit.logistic)$summary[c(1,2,2003),c(1,4,8,9,10)]
 # 2003行目がlp__
