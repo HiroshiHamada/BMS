@@ -134,7 +134,7 @@ Rhat
 library(rstan)
 Y<-c(0,1,1,1,1,0,1,1,0,1)
 N<-length(Y)
-data_for_stan<-list(Y,N)
+data_for_stan<-list(Y=Y,N=N)
 
 fit <- stan(file="model/model-4.stan", data=data_for_stan, seed=1234)
 print(fit)
