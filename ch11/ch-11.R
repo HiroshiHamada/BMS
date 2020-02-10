@@ -3,15 +3,15 @@ library(rstan)
 # library(bridgesampling)
 
 #################################################
-# ## ƒf[ƒ^‚ÉŠÖ‚µ‚Ä
-# ‚±‚Ìƒf[ƒ^‚ÍƒIƒŠƒWƒiƒ‹‚Ìssp2015’²¸ƒf[‚©‚ç
-# 1000ƒTƒ“ƒvƒ‹‚ðƒ‰ƒ“ƒ_ƒ€‚É”²‚«o‚µ‚½ƒf[ƒ^‚Å‚·D
-# •ªÍ‚ÌŒ‹‰Ê‚ÍƒeƒLƒXƒg‚ÆŠ®‘S‚É‚Íˆê’v‚µ‚Ü‚¹‚ñ
+# ## ãƒ‡ãƒ¼ã‚¿ã«é–¢ã—ã¦
+# ã“ã®ãƒ‡ãƒ¼ã‚¿ã¯ã‚ªãƒªã‚¸ãƒŠãƒ«ã®ssp2015èª¿æŸ»ãƒ‡ãƒ¼ã‹ã‚‰
+# 1000ã‚µãƒ³ãƒ—ãƒ«ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã«æŠœãå‡ºã—ãŸãƒ‡ãƒ¼ã‚¿ã§ã™ï¼Ž
+# åˆ†æžã®çµæžœã¯ãƒ†ã‚­ã‚¹ãƒˆã¨å®Œå…¨ã«ã¯ä¸€è‡´ã—ã¾ã›ã‚“
 # 
-# ## bridgesampling‚É‚Â‚¢‚Ä
-# bridgesampling‚É‚æ‚é‘Î”Žü•Ó–Þ“x‚Ì„’è‚É‚Í
-# ‘å‚«‚Èƒƒ‚ƒŠ—Ìˆæ‚ª•K—v‚Æ‚È‚è‚Ü‚·D‚Æ‚­‚ÉC
-# ŠK‘wƒ‚ƒfƒ‹‚Å‚ÌŽÀs‚ÌÛ‚É‚Í‚²’ˆÓ‚­‚¾‚³‚¢D
+# ## bridgesamplingã«ã¤ã„ã¦
+# bridgesamplingã«ã‚ˆã‚‹å¯¾æ•°å‘¨è¾ºå°¤åº¦ã®æŽ¨å®šã«ã¯
+# å¤§ããªãƒ¡ãƒ¢ãƒªé ˜åŸŸãŒå¿…è¦ã¨ãªã‚Šã¾ã™ï¼Žã¨ãã«ï¼Œ
+# éšŽå±¤ãƒ¢ãƒ‡ãƒ«ã§ã®å®Ÿè¡Œã®éš›ã«ã¯ã”æ³¨æ„ãã ã•ã„ï¼Ž
 #################################################
 
 read.csv("SSP2015_for_ch11.csv") %>% 
@@ -177,7 +177,7 @@ options(mc.cores=parallel::detectCores())
 
 null_model <- stan_model( file="model/model-11-1.stan" ) 
 stanFit_null <- sampling( object=null_model , 
-                          data = list(Y, N, X) , 
+                          data = list(Y=Y, N=N, X=X) , 
                           chains = 4 ,
                           iter = 6000 , 
                           warmup = 1000 , 
@@ -217,7 +217,8 @@ options(mc.cores=parallel::detectCores())
 linear_biased_model <-
   stan_model( file="model/model-11-2.stan" ) 
 stanFit_linear_biased <- sampling( object=linear_biased_model , 
-                          data = list(Y, N, X, p_new, N_p_new, X_new, N_X_new) , 
+                          data = list(Y=Y, N=N, X=X, p_new=p_new, 
+                                      N_p_new=N_p_new, X_new=X_new, N_X_new=N_X_new) , 
                           chains = 4 ,
                           iter = 6000 , 
                           warmup = 1000 , 
@@ -328,8 +329,8 @@ options(mc.cores=parallel::detectCores())
 hierarchical_model <-
   stan_model( file="model/model-11-3.stan" ) 
 stanFit_hierarchical <- sampling( object=hierarchical_model , 
-                                   data = list(Y, N, X, Z, K, p_new,
-                                               N_p_new, X_new, N_X_new) , 
+                                   data = list(Y=Y, N=N, X=X, Z=Z, K=, p_new=p_new,
+                                               N_p_new=N_p_new, X_new=X_new, N_X_new=N_X_new) , 
                                    chains = 4 ,
                                    iter = 6000 , 
                                    warmup = 1000 , 
