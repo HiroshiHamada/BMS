@@ -329,7 +329,7 @@ options(mc.cores=parallel::detectCores())
 hierarchical_model <-
   stan_model( file="model/model-11-3.stan" ) 
 stanFit_hierarchical <- sampling( object=hierarchical_model , 
-                                   data = list(Y=Y, N=N, X=X, Z=Z, K=, p_new=p_new,
+                                   data = list(Y=Y, N=N, X=X, Z=Z, K=K, p_new=p_new,
                                                N_p_new=N_p_new, X_new=X_new, N_X_new=N_X_new) , 
                                    chains = 4 ,
                                    iter = 6000 , 
