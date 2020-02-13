@@ -13,39 +13,40 @@ amount_delay <- 5
 choice <- t(dat[-(1:3)]-1)
 
 datastan <- list(N=N,Trial=Trial,D=D,
-                 amount_delay=amount_delay,amoutn_soon=amount_soon,
+                 amount_delay=amount_delay,
+		 amount_soon=amount_soon,
                  choice=choice)
 
 ## MCMC --------------------------------------------------
 
 #exponential discounting
-model.ex <- stan_model("exponential.stan")
+model.ex <- stan_model("model/exponential.stan")
 fit.ex <- sampling(model.ex,data=datastan,iter=11000,warmup=1000,chains=4,cores=4)
 
 #hyperbolic discounting
-model.hb <- stan_model("hyperbolic.stan")
+model.hb <- stan_model("model/hyperbolic.stan")
 fit.hb <- sampling(model.hb,data=datastan,iter=11000,warmup=1000,chains=4,cores=4)
 
 
 #exponential discounting fixed model
-model.ex.f <- stan_model("exponential_fix.stan")
+model.ex.f <- stan_model("model/exponential_fix.stan")
 fit.ex.f <- sampling(model.ex.f,data=datastan,iter=11000,warmup=1000,chains=4,cores=4)
 
 #hyperbolic discounting fixed model
-model.hb.f <- stan_model("hyperbolic_fix.stan")
+model.hb.f <- stan_model("model/hyperbolic_fix.stan")
 fit.hb.f <- sampling(model.hb.f,data=datastan,iter=11000,warmup=1000,chains=4,cores=4)
 
 
 #exponential discounting hierarchical model
-model.ex.h <- stan_model("exponential_h.stan")
+model.ex.h <- stan_model("model/exponential_h.stan")
 fit.ex.h <- sampling(model.ex.h,data=datastan,iter=11000,warmup=1000,chains=4,cores=4)
 
 #hyperbolic discounting hierarchical  model
-model.hb.h <- stan_model("hyperbolic_h.stan")
+model.hb.h <- stan_model("model/hyperbolic_h.stan")
 fit.hb.h <- sampling(model.hb.h,data=datastan,iter=11000,warmup=1000,chains=4,cores=4)
 
 #subjective time model
-model.st.h <- stan_model("subject_time_h.stan")
+model.st.h <- stan_model("model/subject_time_h.stan")
 fit.st.h <- sampling(model.st.h,data=datastan,iter=11000,warmup=1000,chains=4,cores=4)
 
 
