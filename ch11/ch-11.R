@@ -121,7 +121,7 @@ ggplot(data = data_incomeci, aes(x = evalincome)) +
 ################ Bayesian modeling ################
 ###################################################
 
-## figure 11.8
+## figure 11.6
 ab <- tibble(a=c(0,0,0,0), b=c(0,0.2,1,2))
 ggplot(tibble(p=seq(0,1,0.01)), aes(x=p)) +
   mapply(
@@ -143,7 +143,7 @@ ggplot(tibble(p=seq(0,1,0.01)), aes(x=p)) +
 # ggsave("SSPI2015_Comparison_model_p_pi_bw.pdf",
 #        width=12,height=8,unit="cm")
 
-## figure 11.9
+## figure 11.7
 ab <- tibble(a=c(0,0,0,0), b=c(0,0.2,1,2))
 ggplot(tibble(x=seq(0,1000)), aes(x=x)) +
   mapply(
