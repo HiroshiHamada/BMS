@@ -49,8 +49,11 @@
 - BMS-ch06a.pdf 　　第6章前半のスライドです
 - BMS-ch06b.pdf 　　第6章後半のスライドです
 - KL_examples.pdf 　　KL情報量についてのノートです．黒木さんのコメント（[スレッドはこちら](https://twitter.com/genkuroki/status/1230047602852319232)）に感謝します．
-
-
+- BMS-beamer-ch07.pdf 　　第7章のスライドです
+- BMS-beamer-ch08.pdf 　　第8章のスライドです
+- BMS-beamer-ch09.pdf 　　第9章のスライドです
+- BMS-beamer-ch10.pdf 　　第10章のスライドです
+- BMS-beamer-ch11.pdf 　　第11章のスライドです
 
 ## 正誤表
 
